@@ -5,7 +5,7 @@ const Alexa = require('alexa-app');
 var app = new Alexa.app('alexa-slack-skill');
 
 app.launch(function (req, res) {
-	res.say('This is a test skill').reprompt('Fucking A').shouldEndSession(false);
+	res.say('Who shall I insult?').reprompt('I should call who a what?').shouldEndSession(false);
 });
 
 app.error = function (err, req, res) {
@@ -13,24 +13,28 @@ app.error = function (err, req, res) {
 	console.log(req);
 	console.log(res);
 
-	res.say('Sorry, an error ' + err.message);
+	res.say('Sorry, an error occurred ' + err.message);
 };
 
 app.intent( 
-	'sayNumber', {
+	'sayInsult', {
 		'slots': { 
-			'number' : 'NUMBER' 
+			'name' : 'string',
+	   		'insult' : 'string'	
 		},
 		'utterances': [
-			'say the number {1-100|number}',
-			'give me the number {1-100|number}',
-			'tell me the number {1-100|number}',
-			'I want to hear you say the number {1-100|number}'
+			'Tell {name} he\'s a {insult}',
+			'Tell {name} he\'s an {insult}',
+			'Tell {name} she\'s a {insult}',
+			'Tell {name} she\'s an {insult}',
+			'Call {name} a {insult}',
+			'Call {name} an {insult}'
 		]
 	},
 	function (req, res) {
-		var number = req.slot('number');
-		res.say('You asked for the number ' + number);
+		var name = req.slot('name');
+		var insult = req.slot('insult');
+		res.say(name + ', you\'re a ' + insult);
 	}	
 );
 
