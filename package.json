@@ -1,7 +1,7 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.2.5",
-  "description": "A sample Node.js app using Express 4",
+  "name": "alexa-slack-skill",
+  "version": "0.0.0",
+  "description": "An alexa skill service for speaking to a slack team",
   "engines": {
     "node": "5.9.1"
   },
@@ -10,17 +10,18 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "ejs": "2.4.1",
-    "express": "4.13.3"
+    "alexa-app": "2.4.0",
+    "ejs": "2.4.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/dennis-learningpool/alexa-slack-skill.git"
   },
   "keywords": [
     "node",
     "heroku",
-    "express"
+    "alexa",
+	"amazon"
   ],
   "license": "MIT"
 }

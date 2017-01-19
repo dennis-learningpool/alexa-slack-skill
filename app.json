@@ -1,8 +1,7 @@
 {
-  "name": "Start on Heroku: Node.js",
-  "description": "A barebones Node.js app using Express 4",
-  "repository": "https://github.com/heroku/node-js-getting-started",
-  "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "express", "static"],
+  "name": "Alexa Slack Skill",
+  "description": "An amazon alexa skill for posting to slack",
+  "repository": "https://github.com/dennis-learningpool/alexa-slack-skill.git",
+  "keywords": ["node", "alexa", "amazon", "heroku"],
   "image": "heroku/nodejs"
 }

@@ -1,20 +1,37 @@
-var express = require('express');
-var app = express();
+module.change_code = 1;
+'use strict';
 
-app.set('port', (process.env.PORT || 5000));
+const Alexa = require('alexa-app');
+var app = new Alexa.app('alexa-slack-skill');
 
-app.use(express.static(__dirname + '/public'));
-
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
-app.get('/', function(request, response) {
-  response.render('pages/index');
+app.launch(function (req, res) {
+	res.say('This is a test skill').reprompt('Fucking A').shouldEndSession(false);
 });
 
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
+app.error = function (err, req, res) {
+	console.log(err);
+	console.log(req);
+	console.log(res);
 
+	res.say('Sorry, an error ' + err.message);
+};
 
+app.intent( 
+	'sayNumber', {
+		'slots': { 
+			'number' : 'NUMBER' 
+		},
+		'utterances': [
+			'say the number {1-100|number}',
+			'give me the number {1-100|number}',
+			'tell me the number {1-100|number}',
+			'I want to hear you say the number {1-100|number}'
+		]
+	},
+	function (req, res) {
+		var number = req.slot('number');
+		res.say('You asked for the number ' + number);
+	}	
+);
+
+module.exports = app;
