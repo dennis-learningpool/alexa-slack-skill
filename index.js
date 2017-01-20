@@ -32,7 +32,7 @@ app.intent(
 			insults = ['{name}, you\'re despicable.'];
 		}
 
-		var insult = insults[(Math.floor((Math.random() * insults.length) + 1))];
+		var insult = insults[(Math.floor((Math.random() * insults.length)))];
 		res.say(insult.replace('{name}', name));
 	}	
 );
