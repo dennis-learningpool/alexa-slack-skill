@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "alexa-app": "2.4.0",
-    "ejs": "2.4.1"
+    "ejs": "2.4.1",
+    "slack-node": "0.1.8"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,8 @@
     "node",
     "heroku",
     "alexa",
-	"amazon"
+    "slack",
+    "amazon"
   ],
   "license": "MIT"
 }

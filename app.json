@@ -2,6 +2,6 @@
   "name": "Alexa Slack Skill",
   "description": "An amazon alexa skill for posting to slack",
   "repository": "https://github.com/dennis-learningpool/alexa-slack-skill.git",
-  "keywords": ["node", "alexa", "amazon", "heroku"],
+  "keywords": ["node", "alexa", "amazon", "heroku", "slack"],
   "image": "heroku/nodejs"
 }
