@@ -27,7 +27,7 @@ app.intent(
 	},
 	function (req, res) {
 		var name = req.slot('name');
-		var insults = process.env.INSULTS;
+		var insults = process.env.INSULTS.split('|');
 		if (!insults || 0 === insults.length) {
 			insults = ['{name}, you\'re despicable.'];
 		}
