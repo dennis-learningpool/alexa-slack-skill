@@ -7,8 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-	"preinstall": "npm install --ignore-scripts"
+    "start": "node index.js"
   },
   "dependencies": {
     "alexa-app": "2.4.0",
