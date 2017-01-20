@@ -5,7 +5,7 @@ const Alexa = require('alexa-app');
 var app = new Alexa.app('alexa-slack-skill');
 
 app.launch(function (req, res) {
-	res.say('Who shall I insult?').reprompt('I should call who a what?').shouldEndSession(false);
+	res.say('Testing').reprompt('Testing').shouldEndSession(false);
 });
 
 app.error = function (err, req, res) {
@@ -17,23 +17,17 @@ app.error = function (err, req, res) {
 };
 
 app.intent( 
-	'sayInsult', {
+	'postToSlack', {
 		'slots': { 
-			'name' : 'string'
+			'message' : 'string'
 		},
 		'utterances': [
-			'{name}'
+			'{message}'
 		]
 	},
 	function (req, res) {
-		var name = req.slot('name');
-		var insults = process.env.INSULTS.split('|');
-		if (!insults || 0 === insults.length) {
-			insults = ['{name}, you\'re despicable.'];
-		}
-
-		var insult = insults[(Math.floor((Math.random() * insults.length)))];
-		res.say(insult.replace('{name}', name));
+		var message = req.slot('message');
+		res.say(insult.replace('Posting your message to slack'));
 	}	
 );
 
