@@ -2,10 +2,14 @@ module.change_code = 1;
 'use strict';
 
 const Alexa = require('alexa-app');
+const Slack = require('slack-node');
+
 var app = new Alexa.app('alexa-slack-skill');
+var slack = new Slack();
+slack.setWebhook(process.env.SLACK_WEBHOOK_URI);
 
 app.launch(function (req, res) {
-	res.say('Testing').reprompt('Testing').shouldEndSession(false);
+	res.say('What would you like to post?').reprompt('I\'m sorry. Could you repeat that?').shouldEndSession(false);
 });
 
 app.error = function (err, req, res) {
@@ -17,7 +21,7 @@ app.error = function (err, req, res) {
 };
 
 app.intent( 
-	'postToSlack', {
+	'PostToSlackIntent', {
 		'slots': { 
 			'message' : 'string'
 		},
@@ -27,7 +31,16 @@ app.intent(
 	},
 	function (req, res) {
 		var message = req.slot('message');
-		res.say(insult.replace('Posting your message to slack'));
+		slack.webhook({
+			text: message
+		}, function (err, slackRes) {
+			if (err || slackRes.statusCode !== 200) {
+				console.log(err, slackRes);
+				return res.say('Sorry, there was an error.');
+			}
+
+			res.say('Your message was posted');
+		});
 	}	
 );
 
