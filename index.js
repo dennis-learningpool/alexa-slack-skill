@@ -36,12 +36,14 @@ app.intent(
 		}, function (err, slackRes) {
 			if (err || slackRes.statusCode !== 200) {
 				console.log(err, slackRes);
-				return res.say('Sorry, there was an error.');
+				return res.say('Sorry, there was an error.').send();
 			}
 
-			res.say('Your message was posted');
+			return res.say('Your message was posted').send();
 		});
-	}	
+
+		return false;
+	}
 );
 
 module.exports = app;
