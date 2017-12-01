@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "alexa-app": "2.4.0",
-    "ejs": "2.4.1",
+    "ejs": "2.5.5",
     "slack-node": "0.1.8"
   },
   "repository": {
